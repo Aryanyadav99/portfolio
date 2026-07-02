@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { staggerContainer, staggerItem } from '../../animations'
 import SectionTitle from '../common/SectionTitle'
 
-const aizenImage = new URL('../../../aizen3.gif', import.meta.url).href
+const aizenImage = new URL('../../../ichigo.gif', import.meta.url).href
 
 const skillCategories = [
   {
@@ -116,7 +116,7 @@ const Skills = () => {
             absolute
             top-8
             left-[72%]
-            w-40
+            w-200
             object-contain
             drop-shadow-[0_0_30px_rgba(168,85,247,.45)]
         "

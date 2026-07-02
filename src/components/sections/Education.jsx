@@ -5,7 +5,7 @@ import { EDUCATION } from '../../constants'
 import { staggerContainer, staggerItem } from '../../animations'
 import SectionTitle from '../common/SectionTitle'
 
-const aizenImage = new URL('../../../aizen3.gif', import.meta.url).href
+const aizenImage = new URL('../../../gojo.png', import.meta.url).href
 
 const Education = () => {
 

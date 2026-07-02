@@ -13,7 +13,7 @@ import {
 
 import SectionTitle from '../common/SectionTitle'
 
-const aizenImage = new URL('../../../aizen3.gif', import.meta.url).href
+const aizenImage = new URL('../../../sewperman.png', import.meta.url).href
 
 const LEETCODE_URL =
     'https://leetcode.com/u/Ryn_Ydv8874/'

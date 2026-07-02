@@ -14,7 +14,7 @@ import {
 import SectionTitle from '../common/SectionTitle'
 
 const uraharaImage =
-    new URL('../../../aizen2.png', import.meta.url).href
+    new URL('../../../urahara.png', import.meta.url).href
 
 const aizenImage =
     new URL('../../../aizen2.png', import.meta.url).href
