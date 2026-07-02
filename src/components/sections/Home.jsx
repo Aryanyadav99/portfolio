@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import { fadeInRight, floatingAnimation, staggerContainer, staggerItem } from '../../animations'
 
-const aizenPortrait = new URL('../../../aizenreal.png', import.meta.url).href
+const aizenPortrait = new URL('../../../aizenHYP.png', import.meta.url).href
 
 const Home = () => {
   const scrollToSection = (id) => {

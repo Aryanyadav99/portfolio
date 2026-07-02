@@ -1,124 +1,162 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { SKILLS } from '../../constants'
 import { staggerContainer, staggerItem } from '../../animations'
 import SectionTitle from '../common/SectionTitle'
 
-const SkillProgressBar = ({ skill, level, delay }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.5 }}
-      viewport={{ once: true }}
-      className="space-y-2"
-    >
-      <div className="flex justify-between items-center">
-        <span className="text-sm font-semibold text-gray-300">{skill}</span>
-        <span className="text-xs text-purple-400">{level}%</span>
-      </div>
-      <div className="w-full h-2 rounded-full bg-dark-border overflow-hidden neon-border">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          transition={{ delay: delay + 0.2, duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true }}
-          className="h-full bg-gradient-to-r from-purple-600 to-blue-600 rounded-full shadow-neon"
-        />
-      </div>
-    </motion.div>
-  )
-}
+const aizenImage = new URL('../../../aizen3.gif', import.meta.url).href
 
-const SkillCategory = ({ title, skills, delays }) => {
-  return (
+const skillCategories = [
+  {
+    title: 'Programming Languages',
+    skills: ['Java', 'C', 'Python', 'Dart', 'JavaScript'],
+  },
+  {
+    title: 'Frameworks & Libraries',
+    skills: ['Spring Boot', 'Spring Security', 'Flutter'],
+  },
+  {
+    title: 'Databases',
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
+  },
+  {
+    title: 'Developer Tools',
+    skills: ['Git', 'GitHub', 'Docker', 'Maven', 'Postman', 'AWS'],
+  },
+  {
+    title: 'Core Concepts',
+    skills: [
+      'Data Structures',
+      'Algorithms',
+      'REST APIs',
+      'GraphQL',
+      'OOP',
+      'DBMS',
+      'Operating Systems',
+    ],
+  },
+  {
+    title: 'Backend Engineering',
+    skills: [
+      'JWT Authentication',
+      'Rate Limiting',
+      'API Design',
+      'Layered Architecture',
+      'WebSockets',
+    ],
+  },
+]
+
+const SkillCard = ({ title, skills }) => (
     <motion.div
-      variants={staggerItem}
-      className="p-6 rounded-xl glass-effect neon-border"
+        variants={staggerItem}
+        whileHover={{ y: -6 }}
+        className="glass-effect neon-border rounded-xl p-6 transition-all duration-300 hover:shadow-neon-lg"
     >
-      <h3 className="text-lg font-bold text-purple-400 mb-6">{title}</h3>
-      <div className="space-y-4">
-        {skills.map((skill, idx) => (
-          <SkillProgressBar
-            key={skill}
-            skill={skill}
-            level={90 - idx * 5}
-            delay={delays[idx] || idx * 0.1}
-          />
+      <h3 className="text-xl font-bold text-purple-400 mb-6">
+        {title}
+      </h3>
+
+      <div className="flex flex-wrap gap-3">
+        {skills.map((skill) => (
+            <span
+                key={skill}
+                className="
+            px-4
+            py-2
+            rounded-full
+            text-sm
+            font-medium
+            bg-purple-500/10
+            border
+            border-purple-500/30
+            text-gray-200
+            transition-all
+            duration-300
+            hover:bg-purple-500/20
+            hover:border-purple-400
+            hover:text-white
+          "
+            >
+          {skill}
+        </span>
         ))}
       </div>
     </motion.div>
-  )
-}
-
+)
 const Skills = () => {
-  const skillCategories = [
-    { title: 'Backend Development', skills: SKILLS.backend },
-    { title: 'Frontend Development', skills: SKILLS.frontend },
-    { title: 'DevOps & Tools', skills: SKILLS.devops },
-    { title: 'Programming Languages', skills: SKILLS.programming },
-  ]
-
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20">
-      <motion.div
-        className="max-w-6xl w-full"
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-      >
-        {/* Section Title */}
-        <SectionTitle title="EXPERTISE" subtitle="Skills & Technologies" />
-
-        {/* Skills Grid */}
+      <section className="min-h-screen px-4 py-20">
         <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16"
+            className="max-w-6xl mx-auto"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
         >
-          {skillCategories.map((category) => (
-            <SkillCategory
-              key={category.title}
-              title={category.title}
-              skills={category.skills}
-              delays={[]}
-            />
-          ))}
-        </motion.div>
+          {/* Header */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-16">
 
-        {/* Additional Stats */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16"
-        >
-          {[
-            { label: 'Languages', value: '3+' },
-            { label: 'Frameworks', value: '5+' },
-            { label: 'Databases', value: '4+' },
-            { label: 'Tools', value: '10+' },
-          ].map((stat, idx) => (
-            <motion.div
-              key={idx}
-              variants={staggerItem}
-              className="p-6 text-center rounded-lg border neon-border bg-dark-card/50 group hover:bg-dark-card transition-colors"
-            >
-              <p className="text-3xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">
-                {stat.value}
-              </p>
-              <p className="text-sm text-gray-400 tracking-wide">{stat.label}</p>
-            </motion.div>
-          ))}
+            <div className="flex-1">
+
+              <div className="relative">
+
+                <SectionTitle
+                    title="EXPERTISE"
+                    subtitle="Skills & Technologies"
+                />
+
+                <motion.img
+                    src={aizenImage}
+                    alt="Aizen"
+                    draggable={false}
+                    animate={{ y:[0,-8,0] }}
+                    transition={{ duration:3, repeat:Infinity }}
+                    className="
+            hidden lg:block
+            absolute
+            top-8
+            left-[72%]
+            w-40
+            object-contain
+            drop-shadow-[0_0_30px_rgba(168,85,247,.45)]
+        "
+                />
+
+              </div>
+
+              <motion.p
+                  variants={staggerItem}
+                  className="mt-5 text-center lg:text-left text-gray-400 italic max-w-2xl"
+              >
+                Every technique in this arsenal has been forged through building
+                production-grade systems.
+              </motion.p>
+
+            </div>
+
+          </div>
+
+          {/* Skills Grid */}
+
+          <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {skillCategories.map((category) => (
+                <SkillCard
+                    key={category.title}
+                    title={category.title}
+                    skills={category.skills}
+                />
+            ))}
+          </motion.div>
+
         </motion.div>
-      </motion.div>
-    </section>
+      </section>
   )
 }
 
 export default Skills
-

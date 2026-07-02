@@ -26,7 +26,7 @@ const About = () => {
                 src={aizenImage}
                 alt="Aizen"
                 draggable={false}
-                className="hidden lg:block w-36 object-contain drop-shadow-[0_0_30px_rgba(168,85,247,.45)]"
+                className="hidden lg:block w-44 xl:w-52 object-contain drop-shadow-[0_0_35px_rgba(168,85,247,.45)]"
                 animate={{ y:[0,-8,0] }}
                 transition={{ duration:3, repeat:Infinity }}
             />
@@ -74,7 +74,40 @@ const About = () => {
               </div>
 
             </div>
+            <motion.div
+                variants={staggerItem}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10"
+            >
+              <div className="rounded-xl border border-purple-500/20 bg-purple-500/5 p-5">
+                <p className="text-xs uppercase tracking-wider text-gray-500">
+                  Soul Rank
+                </p>
 
+                <p className="mt-2 text-lg font-semibold text-purple-300">
+                  LeetCode Knight
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-purple-500/20 bg-purple-500/5 p-5">
+                <p className="text-xs uppercase tracking-wider text-gray-500">
+                  Combat Style
+                </p>
+
+                <p className="mt-2 text-lg font-semibold text-white">
+                  Competitive Programmer
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-purple-500/20 bg-purple-500/5 p-5">
+                <p className="text-xs uppercase tracking-wider text-gray-500">
+                  Battle Record
+                </p>
+
+                <p className="mt-2 text-lg font-semibold text-yellow-300">
+                  1000+ Problems Solved
+                </p>
+              </div>
+            </motion.div>
             <div className="mt-10">
               <div className="flex justify-between text-xs mb-2">
                 <span className="text-gray-400">REIATSU</span>
