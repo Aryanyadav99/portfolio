@@ -1,167 +1,304 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import { Code2, Zap, Github, Cloud } from 'lucide-react'
-import { ACHIEVEMENTS } from '../../constants'
-import { staggerContainer, staggerItem } from '../../animations'
+import {
+  Trophy,
+  Cloud,
+  ExternalLink
+} from 'lucide-react'
+
+import {
+  staggerContainer,
+  staggerItem
+} from '../../animations'
+
 import SectionTitle from '../common/SectionTitle'
 
-const Counter = ({ target, duration = 2000 }) => {
-  const [count, setCount] = useState(0)
+const aizenImage = new URL('../../../aizen3.gif', import.meta.url).href
 
-  useEffect(() => {
-    const startTime = Date.now()
+const LEETCODE_URL =
+    'https://leetcode.com/u/Ryn_Ydv8874/'
 
-    const timer = setInterval(() => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      setCount(Math.floor(target * progress))
-    }, 50)
-
-    return () => clearInterval(timer)
-  }, [target, duration])
-
-  return <span>{count}</span>
-}
-
-const AchievementCard = ({ achievement, index }) => {
-  const icons = {
-    'Code2': Code2,
-    'Zap': Zap,
-    'Github': Github,
-    'Cloud': Cloud,
-  }
-
-  const Icon = icons[achievement.icon] || Code2
-
-  return (
-    <motion.div
-      variants={staggerItem}
-      whileHover={{ y: -8 }}
-      className="p-8 rounded-xl glass-effect neon-border group overflow-hidden relative hover:shadow-neon-lg transition-all duration-300"
-    >
-      {/* Background glow on hover */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-br from-purple-600/10 to-transparent" />
-
-      <div className="relative z-10 space-y-6">
-        {/* Icon */}
-        <div className="p-4 w-fit rounded-lg bg-purple-500/20 group-hover:bg-purple-500/40 transition-colors">
-          <Icon size={32} className="text-purple-400 group-hover:text-white transition-colors" />
-        </div>
-
-        {/* Title */}
-        <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-          {achievement.title}
-        </h3>
-
-        {/* Stats */}
-        <div className="space-y-4">
-          {/* Stat 1 */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-400">{achievement.label1}</span>
-            <motion.span
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
-              viewport={{ once: true }}
-              className="text-2xl font-bold gradient-text"
-            >
-              {achievement.stat1}
-            </motion.span>
-          </div>
-
-          {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-purple-500/30 to-transparent" />
-
-          {/* Stat 2 */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-400">{achievement.label2}</span>
-            <motion.span
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-              viewport={{ once: true }}
-              className="text-2xl font-bold gradient-text"
-            >
-              {achievement.stat2}
-            </motion.span>
-          </div>
-        </div>
-      </div>
-
-      {/* Border animation */}
-      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border-2 border-transparent bg-gradient-to-r from-purple-500 to-blue-500 p-[1px]">
-        <div className="w-full h-full rounded-[10px] bg-dark-card" />
-      </div>
-    </motion.div>
-  )
-}
+// TODO
+const AWS_CERTIFICATE_URL =
+    'https://todo-add-your-certificate-link.com'
 
 const Achievements = () => {
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20">
-      <motion.div
-        className="max-w-6xl w-full"
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-      >
-        {/* Section Title */}
-        <SectionTitle title="ACCOMPLISHMENTS" subtitle="Achievements & Certifications" />
 
-        {/* Achievements Grid */}
+      <section className="min-h-screen px-4 py-20">
+
         <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16"
+            className="max-w-6xl mx-auto"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
         >
-          {ACHIEVEMENTS.map((achievement, index) => (
-            <AchievementCard key={achievement.id} achievement={achievement} index={index} />
-          ))}
-        </motion.div>
 
-        {/* Summary Stats */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="mt-16 p-8 rounded-xl glass-effect neon-border"
-        >
-          <motion.h3
-            variants={staggerItem}
-            className="text-2xl font-bold mb-8 text-center gradient-text"
-          >
-            Overall Impact
-          </motion.h3>
+          {/* Header */}
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { label: 'Total Projects', value: 50 },
-              { label: 'GitHub Contributions', value: 1000 },
-              { label: 'Problems Solved', value: 800 },
-              { label: 'Contest Rating', value: 1800 },
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                variants={staggerItem}
-                className="text-center"
-              >
-                <p className="text-3xl lg:text-4xl font-bold gradient-text mb-2">
-                  <Counter target={stat.value} duration={2000} />
-                  {stat.value > 100 ? '+' : ''}
-                </p>
-                <p className="text-sm text-gray-400 tracking-wide">{stat.label}</p>
-              </motion.div>
-            ))}
+          <div className="flex items-center justify-center gap-8 mb-14">
+
+            <div>
+
+              <SectionTitle
+                  title="ACCOMPLISHMENTS"
+                  subtitle="Achievements & Certifications"
+              />
+
+            </div>
+
+            <motion.img
+                src={aizenImage}
+                alt="Aizen"
+                draggable={false}
+                className="hidden lg:block w-40 xl:w-48 object-contain drop-shadow-[0_0_35px_rgba(168,85,247,.45)]"
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity
+                }}
+            />
+
           </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* =========================
+              LEETCODE
+        ========================= */}
+
+            <motion.div
+                variants={staggerItem}
+                whileHover={{ y: -8 }}
+                className="glass-effect neon-border rounded-2xl p-8 group relative overflow-hidden hover:shadow-neon-lg transition-all duration-300"
+            >
+
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-purple-600/10 to-transparent pointer-events-none" />
+
+              <div className="relative z-10">
+
+                <div className="flex items-center justify-between">
+
+                  <div className="flex items-center gap-4">
+
+                    <div className="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center">
+                      <Trophy
+                          size={34}
+                          className="text-purple-300"
+                      />
+                    </div>
+
+                    <div>
+
+                      <h3 className="text-2xl font-bold text-white">
+                        LeetCode
+                      </h3>
+
+                      <p className="text-purple-300">
+                        Knight
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                  <a
+                      href={LEETCODE_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-purple-300 hover:text-white transition"
+                  >
+                    <ExternalLink size={22}/>
+                  </a>
+
+                </div>
+
+                <div className="mt-8 space-y-5">
+
+                  <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Username
+                </span>
+
+                    <span className="font-semibold text-white">
+                  Ryn_Ydv8874
+                </span>
+                  </div>
+
+                  <div className="h-px bg-purple-500/20"/>
+
+                  <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Contest Rating
+                </span>
+
+                    <span className="text-2xl font-bold gradient-text">
+                  1930
+                </span>
+                  </div>
+
+                  <div className="h-px bg-purple-500/20"/>
+
+                  <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Problems Solved
+                </span>
+
+                    <span className="text-2xl font-bold gradient-text">
+                  1000+
+                </span>
+                  </div>
+
+                  <div className="h-px bg-purple-500/20"/>
+
+                  <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Current Badge
+                </span>
+
+                    <span className="font-semibold text-yellow-300">
+                  Knight
+                </span>
+                  </div>
+
+                </div>
+
+                <a
+                    href={LEETCODE_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 transition-all"
+                >
+                  View LeetCode Profile
+                  <ExternalLink size={16}/>
+                </a>
+
+              </div>
+
+            </motion.div>
+            {/* =========================
+            AWS CERTIFICATION
+            ========================= */}
+
+            <motion.div
+            variants={staggerItem}
+            whileHover={{ y: -8 }}
+            className="glass-effect neon-border rounded-2xl p-8 group relative overflow-hidden hover:shadow-neon-lg transition-all duration-300"
+          >
+
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-purple-600/10 to-transparent pointer-events-none" />
+
+            <div className="relative z-10">
+
+              <div className="flex items-center justify-between">
+
+                <div className="flex items-center gap-4">
+
+                  <div className="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center">
+                    <Cloud
+                        size={34}
+                        className="text-purple-300"
+                    />
+                  </div>
+
+                  <div>
+
+                    <h3 className="text-2xl font-bold text-white">
+                      AWS
+                    </h3>
+
+                    <p className="text-purple-300">
+                      Cloud Practitioner
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <a
+                    href={AWS_CERTIFICATE_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-purple-300 hover:text-white transition"
+                >
+                  <ExternalLink size={22}/>
+                </a>
+
+              </div>
+
+              <div className="mt-8 space-y-5">
+
+                <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Certification
+                </span>
+
+                  <span className="font-semibold text-white">
+                  AWS Certified Cloud Practitioner
+                </span>
+                </div>
+
+                <div className="h-px bg-purple-500/20"/>
+
+                <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Provider
+                </span>
+
+                  <span className="font-semibold text-white">
+                  Amazon Web Services
+                </span>
+                </div>
+
+                <div className="h-px bg-purple-500/20"/>
+
+                <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Credential
+                </span>
+
+                  <span className="font-semibold text-purple-300">
+                  TODO
+                </span>
+                </div>
+
+                <div className="h-px bg-purple-500/20"/>
+
+                <div className="flex justify-between">
+                <span className="text-gray-400">
+                  Status
+                </span>
+
+                  <span className="text-green-400 font-semibold">
+                  Certified
+                </span>
+                </div>
+
+              </div>
+
+              <a
+                  href={AWS_CERTIFICATE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 transition-all"
+              >
+                Verify Certificate
+                <ExternalLink size={16}/>
+              </a>
+
+            </div>
+
         </motion.div>
-      </motion.div>
-    </section>
-  )
+
+      </div>
+
+</motion.div>
+
+</section>
+
+)
+
 }
 
 export default Achievements
-
