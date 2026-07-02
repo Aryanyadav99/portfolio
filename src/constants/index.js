@@ -9,43 +9,43 @@ export const NAVIGATION_ITEMS = [
 ]
 
 export const SOCIAL_LINKS = [
-  { id: 'github', label: 'GitHub', url: 'https://github.com', icon: 'Github' },
-  { id: 'linkedin', label: 'LinkedIn', url: 'https://linkedin.com', icon: 'Linkedin' },
-  { id: 'leetcode', label: 'LeetCode', url: 'https://leetcode.com', icon: 'Code2' },
+  { id: 'github', label: 'GitHub', url: 'https://github.com/Aryanyadav99', icon: 'Github' },
+  { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/aryan-yadav-0877922a7/', icon: 'Linkedin' },
+  { id: 'leetcode', label: 'LeetCode', url: 'https://leetcode.com/u/Ryn_Ydv8874/', icon: 'Code2' },
 ]
 
 export const PROJECTS = [
   {
     id: 1,
     title: 'Distributed Rate Limiter',
-    description: 'High-performance distributed rate limiter supporting Token Bucket, Sliding Window and Fixed Window algorithms.',
+    description: 'A production-ready distributed rate limiter using Token Bucket, Redis, and Lua scripts.',
     technologies: ['Java', 'Spring Boot', 'Redis', 'Lua', 'Docker'],
-    github: 'https://github.com',
-    demo: 'https://github.com',
+    github: 'https://github.com/Aryanyadav99/distributed-rate-limiter',
+    demo: 'https://github.com/Aryanyadav99/distributed-rate-limiter',
   },
   {
     id: 2,
     title: 'BusMate',
     description: 'Bus reservation backend featuring Redis seat locking, optimistic locking, concurrency control and booking workflow.',
     technologies: ['Java', 'Spring Boot', 'Redis', 'PostgreSQL', 'JPA'],
-    github: 'https://github.com',
-    demo: 'https://github.com',
+    github: 'https://github.com/Aryanyadav99/Bus_Mate_FullStack',
+    demo: 'https://github.com/Aryanyadav99/Bus_Mate_FullStack',
   },
   {
     id: 3,
     title: 'CollabXSkill',
-    description: 'Skill matching platform featuring authentication, realtime messaging and collaboration.',
+    description: 'Skill matching platform featuring authentication, realtime messaging (Chat) and collaboration.',
     technologies: ['Java', 'Spring Boot', 'WebSocket', 'JWT', 'Redis'],
-    github: 'https://github.com',
-    demo: 'https://github.com',
+    github: 'https://collab-x-skill-frontend.vercel.app/',
+    demo: 'https://collab-x-skill-frontend.vercel.app/',
   },
   {
     id: 4,
     title: 'OrbKart',
     description: 'Scalable ecommerce backend supporting authentication, payment integration and RBAC.',
     technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'JWT', 'Stripe', 'Redis'],
-    github: 'https://github.com',
-    demo: 'https://github.com',
+    github: 'https://github.com/Aryanyadav99/OrbKart_Backend',
+    demo: 'https://github.com/Aryanyadav99/OrbKart_Backend',
   },
 ]
 

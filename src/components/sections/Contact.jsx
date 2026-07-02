@@ -81,7 +81,7 @@ const Contact = () => {
               <div className="flex gap-7 mb-10">
 
                 <a
-                    href="https://github.com/TODO"
+                    href="https://github.com/Aryanyadav99"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="glass-effect neon-border rounded-xl h-16 w-44 flex items-center justify-center gap-3 hover:bg-purple-500/10 hover:-translate-y-1 transition-all duration-300"
@@ -93,7 +93,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                    href="https://linkedin.com/in/TODO"
+                    href="https://www.linkedin.com/in/aryan-yadav-0877922a7/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="glass-effect neon-border rounded-xl h-16 w-44 flex items-center justify-center gap-3 hover:bg-purple-500/10 hover:-translate-y-1 transition-all duration-300"
@@ -135,12 +135,12 @@ const Contact = () => {
                 </p>
 
                 <form
-                    action="https://formsubmit.co/aryanyadav03112004@gmail.com"
+                    action="https://formsubmit.co/aryankietstudent@gmail.com"
                     method="POST"
                     className="space-y-5"
                 >
 
-                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_captcha" value="true" />
                   <input type="hidden" name="_template" value="table" />
                   <input type="hidden" name="_subject" value="Portfolio Contact" />
                   <input

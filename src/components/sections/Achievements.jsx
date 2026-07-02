@@ -20,7 +20,7 @@ const LEETCODE_URL =
 
 // TODO
 const AWS_CERTIFICATE_URL =
-    'https://todo-add-your-certificate-link.com'
+    'https://www.credly.com/badges/281429e7-837a-46de-8e83-66a644a84e8e/public_url'
 
 const Achievements = () => {
 
@@ -255,11 +255,12 @@ const Achievements = () => {
 
                 <div className="flex justify-between">
                 <span className="text-gray-400">
-                  Credential
+                  Expires
                 </span>
 
                   <span className="font-semibold text-purple-300">
-                  TODO
+                  February 16, 2029
+
                 </span>
                 </div>
 
